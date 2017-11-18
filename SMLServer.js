@@ -22,11 +22,17 @@ require('http').createServer((req, res) => {
 	if (extname === '.js') {
 		contentType = 'application/javascript';
 	} else if (extname === '.css') {
+		extname = '.less'
+		path = path.substring(0, path.length - 4) + '.less';
 		contentType = 'text/css';
 	} else if (extname === '.jpg' || extname === '.jpeg') {
 		contentType = 'image/jpeg';
 	} else if (extname === '.png') {
 		contentType = 'image/png';
+	} else if (extname === '.html') {
+		extname = '.sml'
+		path = path.substring(0, path.length - 5) + '.sml';
+		contentType = 'text/html';
 	} else if (extname === '.sml') {
 		contentType = 'text/html';
 	} else if (extname === '.less') {
@@ -54,7 +60,7 @@ require('http').createServer((req, res) => {
 					}
 					
 					else if (extname === '.less') {
-						Less.render(content, (error, output) => {
+						Less.render(data.toString(), (error, output) => {
 							let content = output.css;
 							res.write(content);
 							WRITE_FILE({
