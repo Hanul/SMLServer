@@ -1,0 +1,14 @@
+{
+  "name": "smlserver",
+  "version": "0.0.1",
+  "dependencies": {
+    "commander": "latest",
+    "uppercase-core": "latest",
+    "simplemarkuplanguage": "latest",
+    "less": "latest"
+  },
+  "main": "SMLServer.js",
+  "bin": {
+    "smlserver": "./program.js"
+  }
+}
